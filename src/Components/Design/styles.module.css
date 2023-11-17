@@ -1,0 +1,163 @@
+.design {
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.design_header {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 15%;
+}
+
+.tabs {
+  position: absolute;
+  top: 28%;
+  width: 100%;
+}
+
+.apt {
+  width: 90%;
+  margin-top: 80px;
+  height: 180vh;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  gap: 2%;
+}
+
+.tabs_1 {
+  display: flex;
+  justify-content: center;
+}
+
+.first_div {
+  width: 50%;
+  height: 45%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img5 {
+  height: 100%;
+  width: 48%;
+}
+
+.two_images {
+  width: 48%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.two_images_img {
+  width: 100%;
+  height: 48%;
+}
+
+.second_div {
+  width: 50%;
+  height: 65%;
+  position: relative;
+}
+
+.second_div_two_images {
+  width: 100%;
+  height: 33%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.second_div_two_images_img {
+  width: 48%;
+}
+
+.img7 {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 64%;
+}
+
+.img8 {
+  width: 100%;
+  height: 100%;
+}
+
+.house {
+  position: absolute;
+  margin-top: 80px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.apt img:hover {
+  transform: scale(1.05);
+}
+
+.apt img {
+  transition: transform 0.5s;
+}
+
+.apt div {
+  overflow: hidden;
+}
+
+.img8_div {
+  width: 49%;
+  height: 18%;
+  position: absolute;
+  top: 47%;
+}
+
+.house_main {
+  width: 95%;
+  margin-top: 80px;
+  height: 200vh;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.house__div {
+  width: 100%;
+  height: 38%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.image_div {
+  width: 50%;
+  height: 100%;
+}
+
+.image_div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.text_div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image_div:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s;
+}
+
+.text_div h1 {
+  font-size: 60px;
+  border-bottom: 2px solid black;
+}

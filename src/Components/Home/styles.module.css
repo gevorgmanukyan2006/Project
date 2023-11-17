@@ -1,0 +1,25 @@
+.home {
+  height: 100vh;
+  background-image: url("../../images/Image2.jpg");
+  background-size: cover;
+  display: block;
+  font-family: "Allura", cursive;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text h1 {
+  color: white;
+  font-size: 90px;
+}
+
+.text p {
+  color: white;
+  text-align: center;
+  font-size: 21px;
+}

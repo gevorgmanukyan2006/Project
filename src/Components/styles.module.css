@@ -1,0 +1,91 @@
+.main {
+  width: 100%;
+  height: 150vh;
+  background-image: url("../images/to_do_list_background.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.main h1 {
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 10%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 70px;
+}
+
+.addtask {
+  width: 40%;
+  height: 7%;
+  background-color: #bdc0e3;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 23%;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #05121f;
+  font-weight: bolder;
+  font-family: "Open Sans", sans-serif;
+}
+
+.addtask p {
+  margin: 0;
+  font-size: 20px;
+}
+
+.main img {
+  position: absolute;
+  top: 24%;
+  left: 72%;
+}
+
+.TasksContainer {
+  position: absolute;
+  top: 60%;
+  left: 6%;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.no_tasks {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 55%;
+  font-size: 20px;
+  color: white;
+}
+
+.deleteAll {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  gap: 30px;
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+}
+
+.delete_all {
+  width: 180px;
+  height: 50px;
+  background-color: red;
+  border-radius: 10px;
+  border: none;
+  color: white;
+}
+
+.check_all {
+  width: 180px;
+  height: 50px;
+  background-color: #643fef;
+  border-radius: 10px;
+  border: none;
+  color: white;
+}
