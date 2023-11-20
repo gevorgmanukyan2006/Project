@@ -7,6 +7,7 @@ const Home = () => {
     <AnimatedPage>
       <div className={Styles.home}>
         <NavbarComponent />
+
         <div className={Styles.text}>
           <h1>Interior Design</h1>
           <p>

@@ -2,7 +2,6 @@ import Styles from "./styles.module.css";
 import EmailIcon from "../../images/email.png";
 import GitHubIcon from "../../images/github.png";
 import DiscordIcon from "../../images/discord.png";
-import { useState } from "react";
 
 const ContactInfo = () => {
   return (

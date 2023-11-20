@@ -1,11 +1,11 @@
 import Styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo2.png";
-import VariantsExample from "./Button";
+import LoginButton from "../LoginButton";
 
-const NavbarComponent2 = () => {
+const NavbarComponent2 = (props) => {
   return (
-    <div className={Styles.navbar}>
+    <main className={Styles.navbar}>
       <img src={Logo} alt="" className={Styles.logo} />
       <Link className={Styles.link2} to={"/home"}>
         Home
@@ -16,10 +16,11 @@ const NavbarComponent2 = () => {
       <Link className={Styles.link2} to={"/contact"}>
         Contact
       </Link>
-      <Link className={Styles.login} to={"/login"}>
-        <VariantsExample />
+      <Link to={"/"} className={Styles.link2}>
+        {props.isAuthenticated ? "Go to the account" : "Go to the main page"}
       </Link>
-    </div>
+      <LoginButton />
+    </main>
   );
 };
 

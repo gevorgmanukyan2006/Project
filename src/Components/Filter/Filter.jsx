@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import Styles from "./styles.module.css";
-import Image from "../../images/icons8-search-50.png";
+
 const Filter = ({ tasks, setTasks }) => {
   const [searchData, setSearchData] = useState();
   const filterByTitle = () => {

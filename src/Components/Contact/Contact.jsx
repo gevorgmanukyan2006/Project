@@ -5,11 +5,11 @@ import AnimatedPage from "../AnimatedPage/AnimatedPage";
 import ContactInfo from "./ContactInfo";
 import ContactForm from "./ContactForm";
 
-const Contact = () => {
+const Contact = (props) => {
   return (
     <AnimatedPage>
       <div className={Styles.contact}>
-        <NavbarComponent2 />
+        <NavbarComponent2 isAuthenticated={props.isAuthenticated} />
         <div className={Styles.contact_div_1}></div>
         <img src={Image} alt="" className={Styles.contact_image} />
         <ContactForm />

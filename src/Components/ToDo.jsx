@@ -1,14 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AddTask from "./AddTask/AddTask";
 import Task from "./Task/Task";
 import DeleteModal from "./deleteModal/deleteModal";
 import Styles from "./styles.module.css";
-import { idGeneretor } from "../helpers/idGeneretor";
 import AnimatedPage from "./AnimatedPage/AnimatedPage";
-import Button from "react-bootstrap/Button";
-import NavbarComponent2 from "./Navbar/Navbar2";
 import Filter from "./Filter/Filter";
-import Image from "../images/plus.png";
 import {
   createTaskRequest,
   getTaskRequest,
@@ -22,6 +18,9 @@ const ToDo = ({ addNotification }) => {
   let [isOpenAddModal, setIsOpenAddModal] = useState(false);
   let [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   let [editTask, setEditTask] = useState({});
+  let [isDone, setIsDone] = useState(false);
+  let [doneClass, setDoneClass] = useState("");
+
   const inputOnChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -88,7 +87,7 @@ const ToDo = ({ addNotification }) => {
       (acc, checkedTask) => acc.filter((task) => task._id !== checkedTask),
       tasks
     );
-    deleteTaskRequest(arr);
+    deleteTaskRequest(arr, addNotification);
     setTasks(tasks);
     setCheckedTasks(new Set());
     setIsOpenDeleteModal(false);
@@ -136,76 +135,81 @@ const ToDo = ({ addNotification }) => {
   return (
     <AnimatedPage>
       <div className={Styles.main}>
-        <div className={Styles.blur}>
-          <h1>ToDo Project</h1>
+        <h1>ToDo Project</h1>
+        <div className={Styles.addtask_container}>
           <div className={Styles.addtask}>
             <p>What's the Plan for Today?</p>
           </div>
-          <img
-            src={Image}
-            alt=""
+          <div
             onClick={() => handleOpenModal("isOpenAddModal")}
-          />
-
-          <Filter tasks={tasks} setTasks={setTasks} />
-
-          {tasks.length === 0 && (
-            <p className={Styles.no_tasks}>There are not tasks!</p>
-          )}
-          <div className={Styles.TasksContainer}>
-            {tasks.map((item, index) => {
-              return (
-                <Task
-                  tasks={tasks}
-                  setTasks={setTasks}
-                  key={index}
-                  task={item}
-                  handleDeleteTask={handleDeleteTask}
-                  handleOnChange={handleOnChange}
-                  checkedTasks={checkedTasks}
-                  handleEditTask={handleEditTask}
-                />
-              );
-            })}
-            {tasks.length === 0 || (
-              <div className={Styles.deleteAll}>
-                <button
-                  onClick={() => handleOpenModal("isOpenDeleteModal")}
-                  disabled={checkedTasks.size === 0}
-                  className={Styles.delete_all}
-                >
-                  Delete Cheked Tasks
-                </button>
-                <button
-                  onClick={handleCheckAllTasks}
-                  className={Styles.check_all}
-                >
-                  {checkedTasks.size === tasks.length
-                    ? "Uncheck All"
-                    : "Check All"}
-                </button>
-              </div>
-            )}
-          </div>
-          {isOpenAddModal && (
-            <AddTask
-              onHide={onHide}
-              inputOnChange={inputOnChange}
-              submit={submit}
-              inputValue={inputValue}
-              isOpenAddModal={isOpenAddModal}
-              editableTask={editTask}
-              resetEditTask={resetEditTask}
-            />
-          )}
-          <DeleteModal
-            isOpenDeleteModal={isOpenDeleteModal}
-            onHide={onHide}
-            handleDeleteAllTasks={handleDeleteAllTasks}
-            checkedTasks={checkedTasks}
-            tasks={tasks}
-          />
+            className={Styles.addtask_img}
+          ></div>
         </div>
+
+        <Filter tasks={tasks} setTasks={setTasks} />
+
+        {tasks.length === 0 && (
+          <p className={Styles.no_tasks}>There are not tasks!</p>
+        )}
+        <div className={Styles.TasksContainer}>
+          {tasks.map((item) => {
+            return (
+              <Task
+                tasks={tasks}
+                setTasks={setTasks}
+                task={item}
+                handleDeleteTask={handleDeleteTask}
+                handleOnChange={handleOnChange}
+                checkedTasks={checkedTasks}
+                handleEditTask={handleEditTask}
+                isDone={isDone}
+                setIsDone={setIsDone}
+                doneClass={doneClass}
+                setDoneClass={setDoneClass}
+              />
+            );
+          })}
+        </div>
+
+        <div className={Styles.container}>
+          {tasks.length === 0 || (
+            <div className={Styles.deleteAll}>
+              <button
+                onClick={() => handleOpenModal("isOpenDeleteModal")}
+                disabled={checkedTasks.size === 0}
+                className={Styles.delete_all}
+              >
+                Delete Cheked Tasks
+              </button>
+              <button
+                onClick={handleCheckAllTasks}
+                className={Styles.check_all}
+              >
+                {checkedTasks.size === tasks.length
+                  ? "Uncheck All"
+                  : "Check All"}
+              </button>
+            </div>
+          )}
+        </div>
+        {isOpenAddModal && (
+          <AddTask
+            onHide={onHide}
+            inputOnChange={inputOnChange}
+            submit={submit}
+            inputValue={inputValue}
+            isOpenAddModal={isOpenAddModal}
+            editableTask={editTask}
+            resetEditTask={resetEditTask}
+          />
+        )}
+        <DeleteModal
+          isOpenDeleteModal={isOpenDeleteModal}
+          onHide={onHide}
+          handleDeleteAllTasks={handleDeleteAllTasks}
+          checkedTasks={checkedTasks}
+          tasks={tasks}
+        />
       </div>
     </AnimatedPage>
   );

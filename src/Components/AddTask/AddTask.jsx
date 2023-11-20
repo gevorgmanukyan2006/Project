@@ -1,5 +1,5 @@
 import Styles from "./styles.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -69,12 +69,17 @@ const AddTask = ({
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => onHide("isOpenAddModal")}>
+        <Button
+          variant="secondary"
+          onClick={() => onHide("isOpenAddModal")}
+          className={Styles.close_button}
+        >
           Close
         </Button>
         <Button
           variant="primary"
           onClick={() => submit(!isAddState ? editTask : undefined)}
+          className={Styles.add_edit_button}
         >
           {isAddState ? "Add Task" : "Edit Task"}
         </Button>

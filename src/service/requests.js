@@ -14,9 +14,8 @@ export const createTaskRequest = async (task, addNotification) => {
     });
     const newTask = await response.json();
     if (response.ok) {
-      addNotification("Your task was successfuly added!", "success");
+      addNotification("Your task has been successfully added!", "success");
     }
-    // throw "Something qent wrong!";
     return newTask;
   } catch (error) {
     addNotification(error, "error");
@@ -27,10 +26,9 @@ export const getTaskRequest = async (setTasks) => {
   const response = await fetch(`${API_HOST}/task`);
   const tasks = await response.json();
   setTasks(tasks);
-  console.log(tasks, "tasks");
 };
 
-export const deleteTaskRequest = async (array) => {
+export const deleteTaskRequest = async (array, addNotification) => {
   console.log(array, "array");
   const response = await fetch(`${API_HOST}/task`, {
     method: "PATCH",
@@ -39,5 +37,10 @@ export const deleteTaskRequest = async (array) => {
     },
     body: JSON.stringify({ tasks: array }),
   });
+  if (array.length > 1) {
+    addNotification("Your tasks have been successfully deleted!", "error");
+  } else if (array.length === 1) {
+    addNotification("Your task has been successfully deleted!", "error");
+  }
   console.log(response);
 };

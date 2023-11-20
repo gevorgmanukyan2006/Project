@@ -1,8 +1,3 @@
-.add_edit_button {
-  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
-  border: none;
-}
-
 .close_button {
   background: linear-gradient(
       to bottom,
@@ -16,5 +11,10 @@
       )
       #989898;
   background-blend-mode: multiply, multiply;
+  border: none;
+}
+
+.delete_button {
+  background-color: #850909;
   border: none;
 }

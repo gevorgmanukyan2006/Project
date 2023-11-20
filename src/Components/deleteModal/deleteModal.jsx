@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Styles from "./styles.module.css";
 
 function Deletemodal({
   isOpenDeleteModal,
@@ -7,6 +8,7 @@ function Deletemodal({
   handleDeleteAllTasks,
   checkedTasks,
   tasks,
+  tasks2,
 }) {
   let newTask;
   if (checkedTasks?.size === 1) {
@@ -24,10 +26,18 @@ function Deletemodal({
           : ` ${checkedTasks.size} tasks ?`}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => onHide("isOpenDeleteModal")}>
+        <Button
+          variant="secondary"
+          onClick={() => onHide("isOpenDeleteModal")}
+          className={Styles.close_button}
+        >
           Close
         </Button>
-        <Button variant="danger" onClick={handleDeleteAllTasks}>
+        <Button
+          variant="danger"
+          onClick={handleDeleteAllTasks}
+          className={Styles.delete_button}
+        >
           Delete
         </Button>
       </Modal.Footer>

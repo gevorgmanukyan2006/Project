@@ -1,11 +1,11 @@
 import Styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo.png";
-import VariantsExample from "./Button";
+import LoginButton from "../LoginButton";
 
 const NavbarComponent = () => {
   return (
-    <div className={Styles.navbar}>
+    <main className={Styles.navbar}>
       <img src={Logo} alt="" className={Styles.logo} />
       <Link className={Styles.link} to={"/home"}>
         Home
@@ -16,10 +16,11 @@ const NavbarComponent = () => {
       <Link className={Styles.link} to={"/contact"}>
         Contact
       </Link>
-      <Link className={Styles.login} to={"/login"}>
-        <VariantsExample />
+      <Link to={"/"} className={Styles.link}>
+        Go to the main page
       </Link>
-    </div>
+      <LoginButton />
+    </main>
   );
 };
 

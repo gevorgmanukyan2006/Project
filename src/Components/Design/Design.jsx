@@ -20,9 +20,6 @@ const Design = () => {
             <Tab title="Houses" className="mr-3">
               <House />
             </Tab>
-            <Tab title="Commerical States" className="mr-3">
-              <div className="mt-3"></div>
-            </Tab>
           </Tabs>
         </div>
       </div>

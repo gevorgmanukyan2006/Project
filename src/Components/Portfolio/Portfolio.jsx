@@ -8,9 +8,15 @@ import ParticlesBackground from "../ParticlesBackground";
 const Portfolio = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const CloseMenu = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <AnimatedPage>
-      <div className={Styles.portfolio_main}>
+      <div className={Styles.portfolio_main} onClick={CloseMenu}>
         <ParticlesBackground />
         <div className={Styles.portfolio_div_1}>
           <div className={Styles.welcome}>

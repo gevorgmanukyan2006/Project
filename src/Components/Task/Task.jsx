@@ -1,7 +1,5 @@
 import Styles from "./styles.module.css";
-import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import Switch from "./Switch";
 
 const Task = (props) => {
   const {
@@ -13,40 +11,49 @@ const Task = (props) => {
     setTasks,
     tasks,
   } = props;
-  return (
-    <div className={Styles.task}>
-      <input
-        type="checkbox"
-        onChange={() => handleOnChange(task._id)}
-        checked={checkedTasks.has(task._id)}
-        className={Styles.check_box}
-      />
-      <div className={Styles.text_div}>
-        <p>Title: {task.title}</p>
 
-        <p>Description: {task.description}</p>
-        <p>Date: {task.created_at}</p>
+  const taskClass = task.status === "done" ? Styles.taskDone : Styles.task;
+  const paragraphClass =
+    task.status === "done" ? Styles.done_paragraph : Styles.paragraph;
+
+  return (
+    <div className={taskClass}>
+      <div className={Styles.title_div}>
+        <input
+          type="checkbox"
+          onChange={() => handleOnChange(task._id)}
+          checked={checkedTasks.has(task._id)}
+          className={Styles.check_box}
+        />
+        <p className={paragraphClass}>{task.title}</p>
       </div>
+      <div className={Styles.description_date}>
+        <p>Description: {task.description}</p>
+        <p>Date: {task.created_at.split("T", 1)[0]}</p>
+      </div>
+
       <div className={Styles.iconsContainer}>
         <button
           onClick={() => handleDeleteTask(task._id)}
           disabled={checkedTasks.has(task._id)}
           className={Styles.delete}
         ></button>
-        <button
-          disabled={checkedTasks.has(task._id)}
-          onClick={() => handleEditTask(task)}
-          className={Styles.edit}
-        ></button>
+        {task.status === "active" && (
+          <button
+            disabled={checkedTasks.has(task._id)}
+            onClick={() => handleEditTask(task)}
+            className={Styles.edit}
+          ></button>
+        )}
+
         <Form>
           <Form.Check
             checked={task.status === "done"}
             type="switch"
             id="custom-switch"
-            label="Check your task"
+            label={task.status === "done" ? "Uncheck task" : "Check task"}
             className={Styles.switch}
             onChange={async (e) => {
-              console.log(e.target.checked);
               const response = await fetch(
                 `http://localhost:3001/task/${task._id}`,
                 {
@@ -60,6 +67,7 @@ const Task = (props) => {
                 }
               );
               const data = await response.json();
+
               const newTasks = tasks.map((item) => {
                 if (item._id === task._id) {
                   return { ...item, status: data.status };

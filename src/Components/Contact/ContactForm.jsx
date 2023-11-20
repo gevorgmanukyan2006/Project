@@ -17,7 +17,6 @@ const ContactForm = () => {
       value.message = e.target.value;
     }
     setValue(value);
-    // console.log(value);
   };
 
   return (
@@ -28,20 +27,22 @@ const ContactForm = () => {
         placeholder="Enter your name"
         onChange={OnChange}
         required
+        id="name_input"
       />
       <input
         type="email"
         placeholder="Enter your email"
         onChange={OnChange}
         required
+        id="email_input"
       />
       <textarea
         name=""
-        id=""
         cols="30"
         rows="10"
         placeholder="Enter your message"
         onChange={OnChange}
+        id="message_input"
       ></textarea>
       <button onClick={() => OpenAlert(value)}>Submit</button>
     </div>
